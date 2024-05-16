@@ -38,6 +38,6 @@ public class Professor {
     @ManyToMany(mappedBy = "professores")
     private Set<Curso> cursos = new HashSet<>();
 
-    @OneToMany(mappedBy = "professsores")
+    @OneToMany(mappedBy = "professsor")
     private Set<Agendamento> agendamentos = new HashSet<>();
 }
