@@ -1,5 +1,9 @@
 package com.example.sistemagestaotreinamento.models;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 // import java.util.HashSet;
 // import java.util.Set;
 
@@ -8,6 +12,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 // import jakarta.persistence.ManyToMany;
 // import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -34,6 +42,18 @@ public class Professor {
     private String endereco;
     @Column(length = 30, nullable = false)
     private String celular;
+
+    @ManyToMany
+    @JoinTable(name = "curso_professor", joinColumns = @JoinColumn(name = "professor_id"), inverseJoinColumns = @JoinColumn(name = "curso_id"))
+    private Set<Curso> cursos = new HashSet<>();
+
+    @OneToMany(mappedBy = "professor")
+    private Set<Agendamento> agendamentos = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, cpf, rg, endereco, celular);
+    }
 
     // @ManyToMany(mappedBy = "professores")
     // private Set<Curso> cursos = new HashSet<>();

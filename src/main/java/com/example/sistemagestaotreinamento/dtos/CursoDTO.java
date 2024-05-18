@@ -1,5 +1,7 @@
 package com.example.sistemagestaotreinamento.dtos;
 
+import java.util.Set;
+
 // import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -16,5 +18,5 @@ public class CursoDTO {
     private int cargaHoraria;
     private String objetivos;
     private String ementa;
-    // List<ProfessorDTO> professores;
+    private Set<ProfessorDTO> professores;
 }
