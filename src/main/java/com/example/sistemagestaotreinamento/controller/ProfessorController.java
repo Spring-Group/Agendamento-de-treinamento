@@ -38,4 +38,9 @@ public class ProfessorController {
   public void excluirProfessor(@PathVariable Integer id) {
     professorService.excluir(id);
   }
+
+  @PutMapping("/{professorId}/agendamentos/{agendamentoId}")
+  public void vincularAgendamentoAProfessor(@PathVariable Integer professorId, @PathVariable Integer agendamentoId) {
+    professorService.vincularProfessorAAgendamento(professorId, agendamentoId);
+  }
 }

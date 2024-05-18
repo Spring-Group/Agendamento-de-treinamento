@@ -1,5 +1,7 @@
 package com.example.sistemagestaotreinamento.dtos;
 
+import java.util.Set;
+
 // import java.util.List;
 // import com.example.sistemagestaotreinamento.models.Agendamento;
 // import com.example.sistemagestaotreinamento.models.Curso;
@@ -19,6 +21,5 @@ public class ProfessorDTO {
     private String rg;
     private String endereco;
     private String celular;
-    // List<Curso> cursos;
-    // List<Agendamento> agendamentos;
+    private Set<AgendamentoDTO> agendamentos;
 }

@@ -1,5 +1,6 @@
 package com.example.sistemagestaotreinamento;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.sistemagestaotreinamento.models.Agendamento;
 import com.example.sistemagestaotreinamento.models.Curso;
 import com.example.sistemagestaotreinamento.models.Professor;
 import com.example.sistemagestaotreinamento.repositories.AgendamentoRepository;
@@ -50,6 +52,20 @@ public class SistemaGestaoTreinamentoApplication {
 			// Salvando as entidades
 			cursoRepository.save(curso);
 			professorRepository.save(professor);
+
+			// Cadastrando o Agendamento
+			Agendamento agendamento = new Agendamento();
+			agendamento.setDescricao("Agendamento Teste");
+			agendamento.setDataInicio(LocalDateTime.now());
+			agendamento.setDataFim(LocalDateTime.now().plusHours(1));
+			agendamento.setCidade("Cidade Teste");
+			agendamento.setUf("UF");
+			agendamento.setCep("00000-000");
+			agendamento.setResumo("Resumo do agendamento teste");
+			agendamento.setCurso(curso);
+			agendamento.setProfessor(professor);
+
+			agendamentoRepository.save(agendamento);
 
 		};
 	}

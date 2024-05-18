@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.sistemagestaotreinamento.dtos.AgendamentoDTO;
 import com.example.sistemagestaotreinamento.dtos.CursoDTO;
 import com.example.sistemagestaotreinamento.dtos.ProfessorDTO;
 import com.example.sistemagestaotreinamento.exceptions.RegraNegocioException;
@@ -41,9 +42,18 @@ public class CursoServiceImp implements CursoService {
     public CursoDTO buscarPorId(Integer id) {
         Curso curso = cursoRepository.findById(id).orElseThrow(() -> new RegraNegocioException("Curso não encontrado"));
 
-        Set<ProfessorDTO> professorDTOs = curso
-                .getProfessores().stream().map(professor -> new ProfessorDTO(professor.getNome(), professor.getCpf(),
-                        professor.getRg(), professor.getEndereco(), professor.getCelular()))
+        Set<ProfessorDTO> professorDTOs = curso.getProfessores().stream()
+                .map(professor -> {
+                    Set<AgendamentoDTO> agendamentoDTOs = professor.getAgendamentos().stream()
+                            .map(agendamento -> new AgendamentoDTO(agendamento.getDescricao(),
+                                    agendamento.getDataInicio(),
+                                    agendamento.getDataFim(), agendamento.getCidade(), agendamento.getUf(),
+                                    agendamento.getCep(), agendamento.getResumo()))
+                            .collect(Collectors.toSet());
+
+                    return new ProfessorDTO(professor.getNome(), professor.getCpf(), professor.getRg(),
+                            professor.getEndereco(), professor.getCelular(), agendamentoDTOs);
+                })
                 .collect(Collectors.toSet());
 
         return new CursoDTO(curso.getDescricao(), curso.getCargaHoraria(), curso.getObjetivos(), curso.getEmenta(),

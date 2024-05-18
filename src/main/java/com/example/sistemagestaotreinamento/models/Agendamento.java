@@ -1,6 +1,7 @@
 package com.example.sistemagestaotreinamento.models;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,11 +49,8 @@ public class Agendamento {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    // @ManyToOne
-    // @JoinColumn(name = "curso_id", nullable = false)
-    // private Curso curso;
-
-    // @ManyToOne
-    // @JoinColumn(name = "professor_id", nullable = false)
-    // private Professor professor;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descricao, dataInicio, dataFim, cidade, uf, cep, resumo);
+    }
 }

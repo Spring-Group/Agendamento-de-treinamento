@@ -1,17 +1,14 @@
 package com.example.sistemagestaotreinamento.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-// import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.example.sistemagestaotreinamento.models.Professor;
 
 public interface ProfessorRepository extends JpaRepository<Professor, Integer> {
 
-    // @Query("SELECT p FROM Professor p LEFT JOIN FETCH p.cursos WHERE p.id =
-    // :professorId")
-    // Professor findProfessorWithCursosById(int professorId);
+    @Query("SELECT DISTINCT a FROM Agendamento a LEFT JOIN FETCH a.professor p WHERE p.id = :professorId")
+    Professor findProfessorWithAgendamentosById(@Param("professorId") int professorId);
 
-    // @Query("SELECT p FROM Professor p LEFT JOIN FETCH p.agendamentos WHERE p.id =
-    // :professorId")
-    // Professor findProfessorWithAgendamentosById(int professorId);
 }

@@ -51,10 +51,4 @@ public class Curso {
         return Objects.hash(id, descricao, cargaHoraria, objetivos, ementa);
     }
 
-    // @ManyToMany
-    // @JoinTable(
-    // name = "curso_professor",
-    // joinColumns = @JoinColumn(name = "curso_id"),
-    // inverseJoinColumns = @JoinColumn(name = "professor_id"))
-    // private Set<Professor> professores = new HashSet<>();
 }
