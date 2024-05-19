@@ -1,7 +1,5 @@
 package com.example.sistemagestaotreinamento.services;
 
-import java.time.LocalDateTime;
-
 // import java.util.List;
 
 import com.example.sistemagestaotreinamento.dtos.CursoDTO;
@@ -13,7 +11,7 @@ public interface CursoService {
 
     void excluir(Integer id);
 
-    void vincularCursoAProfessor(Integer cursoId, Integer professorId, LocalDateTime dataInicio, LocalDateTime dataFim);
+    void vincularCursoAProfessor(Integer cursoId, Integer professorId);
 
     CursoDTO buscarPorId(Integer id);
 

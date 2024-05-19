@@ -1,9 +1,6 @@
 package com.example.sistemagestaotreinamento.controller;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sistemagestaotreinamento.dtos.CursoDTO;
@@ -44,9 +40,7 @@ public class CursoController {
   }
 
   @PostMapping("/{cursoId}/professores/{professorId}")
-  public void vincularProfessorACurso(@PathVariable Integer cursoId, @PathVariable Integer professorId,
-      @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicio,
-      @RequestParam("dataFim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFim) {
-    cursoService.vincularCursoAProfessor(cursoId, professorId, dataInicio, dataFim);
+  public void vincularProfessorACurso(@PathVariable Integer cursoId, @PathVariable Integer professorId) {
+    cursoService.vincularCursoAProfessor(cursoId, professorId);
   }
 }

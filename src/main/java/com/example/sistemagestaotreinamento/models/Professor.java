@@ -54,10 +54,4 @@ public class Professor {
     public int hashCode() {
         return Objects.hash(id, nome, cpf, rg, endereco, celular);
     }
-
-    // @ManyToMany(mappedBy = "professores")
-    // private Set<Curso> cursos = new HashSet<>();
-
-    // @OneToMany(mappedBy = "professsor")
-    // private Set<Agendamento> agendamentos = new HashSet<>();
 }

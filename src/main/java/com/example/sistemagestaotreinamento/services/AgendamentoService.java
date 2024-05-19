@@ -12,8 +12,5 @@ public interface AgendamentoService {
 
     void excluir(Integer id);
 
-    // void vincularCursoEProfessor(Integer agendamentoId, Integer cursoId, Integer
-    // professorId);
     AgendamentoDTO buscarPorId(Integer id);
-    // List<AgendamentoDTO> buscarTodos();
 }
