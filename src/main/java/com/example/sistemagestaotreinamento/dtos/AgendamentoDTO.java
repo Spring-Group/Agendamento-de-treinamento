@@ -19,6 +19,4 @@ public class AgendamentoDTO {
     private String uf;
     private String cep;
     private String resumo;
-    // List<CursoDTO> cursos;
-    // List<ProfessorDTO> professores;
 }

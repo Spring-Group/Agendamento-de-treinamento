@@ -1,7 +1,5 @@
 package com.example.sistemagestaotreinamento.services;
 
-// import java.util.List;
-
 import com.example.sistemagestaotreinamento.dtos.ProfessorDTO;
 
 public interface ProfessorService {

@@ -1,8 +1,11 @@
 package com.example.sistemagestaotreinamento.services;
 
-// import java.util.List;
+import java.time.LocalDateTime;
+
+import java.util.List;
 
 import com.example.sistemagestaotreinamento.dtos.AgendamentoDTO;
+import com.example.sistemagestaotreinamento.models.Agendamento;
 
 public interface AgendamentoService {
 
@@ -13,4 +16,6 @@ public interface AgendamentoService {
     void excluir(Integer id);
 
     AgendamentoDTO buscarPorId(Integer id);
+
+    List<Agendamento> findAgendamentosBetweenDates(LocalDateTime dataInicio, LocalDateTime dataFim);
 }

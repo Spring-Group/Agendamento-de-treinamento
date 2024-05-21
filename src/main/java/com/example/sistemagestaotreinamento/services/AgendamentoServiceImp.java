@@ -1,5 +1,8 @@
 package com.example.sistemagestaotreinamento.services;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.sistemagestaotreinamento.dtos.AgendamentoDTO;
@@ -57,6 +60,11 @@ public class AgendamentoServiceImp implements AgendamentoService {
     return new AgendamentoDTO(agendamento.getDescricao(), agendamento.getDataInicio(), agendamento.getDataFim(),
         agendamento.getCidade(),
         agendamento.getUf(), agendamento.getCep(), agendamento.getResumo());
+  }
+
+  @Override
+  public List<Agendamento> findAgendamentosBetweenDates(LocalDateTime dataInicio, LocalDateTime dataFim) {
+    return agendamentoRepository.findAgendamentosBetweenDates(dataInicio, dataFim);
   }
 
 }
